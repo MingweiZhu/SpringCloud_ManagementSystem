@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#menu_manage").click(function(){
+                $("iframe").attr("src","/account/redirect/menu_manage");
+            });
+            $("#menu_add").click(function(){
+                $("iframe").attr("src","/menu/findTypes");
+            });
+            $("#order_handler").click(function(){
+                $("iframe").attr("src","/menu/redirect/order_handler");
+            });
+            $("#user_manage").click(function(){
+                $("iframe").attr("src","/menu/redirect/user_manage");
+            });
+            $("#user_add").click(function(){
+                $("iframe").attr("src","/menu/redirect/user_add");
+            });
+        })
+    </script>
+</head>
+
+<div class="layui-layout layui-layout-admin">
+    <body class="layui-layout-body">
+
+    <div class="layui-header">
+        <div class="layui-logo">management system</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img th:src="@{/images/img.jpeg}" class="layui-nav-img">
+                    <span th:text="${session.admin.username}"></span>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/account/logout">exist system</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">product management</a>
+                    <dl class="layui-nav-child">
+                        <dd class="layui-this"><a id="menu_manage" href="javascript:void(0)">search product</a></dd>
+                        <dd><a id="menu_add" href="javascript:void(0)">add product</a></dd>
+                        <dd><a id="order_handler" href="javascript:void(0)">deal product</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">user management</a>
+                    <dl class="layui-nav-child">
+                        <dd><a id="user_manage" href="javascript:void(0)">search management</a></dd>
+                        <dd><a id="user_add" href="javascript:void(0)">add user</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+
+        <iframe src="/menu/redirect/menu_manage" style="width: 100%;height: 100%;border: 0px"></iframe>
+
+    </div>
+
+    <div class="layui-footer">
+        © Mingwei
+    </div>
+
+</div>
+<script>
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>
